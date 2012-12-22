@@ -1,0 +1,98 @@
+package com.markduenas.android.apigen;
+
+import java.io.IOException;
+
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.webkit.WebView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+public class apigen extends Activity implements View.OnClickListener {
+	LinearLayout lMain;
+	WebView wvPi;
+	EditText textNumberofDigits;
+	Button buttonGenerate;
+	String stringPi = "3.";
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+        
+        lMain = (LinearLayout)findViewById(R.id.lMain);
+        wvPi = (WebView)lMain.findViewById(R.id.wvPi);
+        textNumberofDigits = (EditText)lMain.findViewById(R.id.EditText01);
+        buttonGenerate = (Button)lMain.findViewById(R.id.buttonGenerate);
+        buttonGenerate.setOnClickListener(this);
+        if(savedInstanceState != null) {
+        	textNumberofDigits.setText(savedInstanceState.getString("numberOfDigits"));
+        	wvPi.loadData(savedInstanceState.getString("generatedPi"), "text/html", "utf-8");
+        	//String summary = "<html><body>You scored <b>192</b> points.</body></html>";
+        	//webview.loadData(summary, "text/html", "utf-8");
+        } else {
+        	stringPi = "<html><body><p>3.</p></body></html>";
+			wvPi.loadData(stringPi, "text/html", "utf-8");
+        }
+    }
+    @Override 
+    protected void onRestoreInstanceState(Bundle savedInstanceState) { 
+      super.onRestoreInstanceState(savedInstanceState); 
+      this.textNumberofDigits.setText(savedInstanceState.getCharSequence("numberOfDigits"));
+      this.wvPi.loadData(savedInstanceState.getString("generatedPi"), "text/html", "utf-8");
+  	} 
+    @Override 
+    protected void onSaveInstanceState(Bundle outState) { 
+      super.onSaveInstanceState(outState); 
+      outState.putString("numberOfDigits", this.textNumberofDigits.getText().toString());
+      outState.putString("generatedPi", this.stringPi);
+    }
+    /**
+	 * Handle the click for each button
+	 * @param view
+	 */
+	public void onClick(View view) {
+		try {
+			String digits = textNumberofDigits.getText().toString();
+			int d = Integer.parseInt(digits);
+			if(d > 1750) {
+				d = 1750;
+				textNumberofDigits.setText("1750");
+				toastMsg("Max number allowed is 1750.", 3000);
+				return;
+			}
+			if(d <= 0) {
+				d = 5;
+				textNumberofDigits.setText("2");
+				toastMsg("Number must be greater than 0.", 3000);
+				return;
+			}
+			String pi = bigpi.calcPi(d);
+			stringPi = "<html><body><p>";
+			stringPi += pi;
+			stringPi += "</p></body></html>";
+			wvPi.loadData(stringPi, "text/html", "utf-8");
+		} catch (ActivityNotFoundException e) {
+			Log.e("onclick", e.getMessage());
+		} catch (NumberFormatException e) {
+			Log.e("onclick", e.getMessage());
+		} catch (IOException e) {
+			Log.e("onclick", e.getMessage());
+		}
+	}
+	/**
+	 * show a toast message to the user
+	 * @param msg
+	 * @param toastLength
+	 */
+	private void toastMsg(String msg, int toastLength) {
+		Toast
+		.makeText(this, msg, toastLength)
+		.show();
+	}	
+}

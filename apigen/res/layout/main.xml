@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent" 
+	android:layout_height="match_parent"
+	android:id="@+id/lMain"
+	android:orientation="vertical">
+	
+    <LinearLayout 
+        android:id="@+id/llGenerate"
+		android:layout_width="match_parent" 
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+	
+		<EditText 
+		    android:id="@+id/tvNumDigits" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:text="1500" />
+		
+		<Button 
+		    android:id="@+id/buttonGenerate"
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:text="Generate" />
+		
+		<TextView 
+		    android:id="@+id/tvScale" 
+			android:layout_width="match_parent" 
+			android:layout_height="match_parent" 
+			android:text="1.0" />
+		
+	</LinearLayout>
+	
+	<LinearLayout 
+	    android:id="@+id/llWebView"
+		android:layout_width="match_parent" 
+		android:layout_height="300dip"
+		android:orientation="horizontal"
+		android:layout_weight="1">
+		<TextView 
+		    android:id="@+id/tvPi" 
+			android:layout_width="match_parent" 
+			android:layout_height="match_parent" 
+			android:scrollbars = "vertical"
+			android:text="3." />
+		<!-- <ScrollView
+		    android:id="@+id/scrollView1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="match_parent" >
+		  
+		        <WebView
+			    	android:id="@+id/wvPi"
+			    	android:layout_width="match_parent"
+			    	android:layout_height="match_parent" />
+
+		 </ScrollView> -->
+	</LinearLayout>
+</LinearLayout>

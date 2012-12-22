@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="numdigitsLabel">Enter the number of digits of pi to generate:</string>
+    <string name="app_name">apigen</string>
+	<string name="tvPi">3.</string>
+</resources>

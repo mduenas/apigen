@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:visibility="visible" android:isScrollContainer="false">
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:id="@+id/lMain">
+		<TextView  
+		    android:layout_width="fill_parent" 
+		    android:layout_height="wrap_content" android:text="@string/numdigitsLabel" 
+		    android:textSize="20px"/>
+		<TableLayout 
+			android:id="@+id/TableLayout01" 
+			android:layout_width="fill_parent" 
+			android:layout_height="fill_parent">
+			<TableRow android:id="@+id/TableRow01" 
+				android:layout_width="fill_parent" 
+				android:layout_height="fill_parent">
+				<EditText 
+					android:id="@+id/EditText01" 
+					android:layout_width="100px" 
+					android:layout_height="65px" 
+					android:text="314" />
+				<Button
+					android:id="@+id/buttonGenerate"
+					android:layout_width="150px" 
+					android:layout_height="65px" 
+					android:text="Generate" />
+			</TableRow>
+		</TableLayout>
+		<WebView 
+			android:id="@+id/wvPi" 
+			android:layout_width="fill_parent" 
+        	android:layout_height="250px"
+        	android:layout_weight="1" />
+	</LinearLayout>
+</ScrollView>
