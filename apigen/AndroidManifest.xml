@@ -5,7 +5,7 @@
     android:versionCode="9"
     android:versionName="1.1">
     <application android:icon="@drawable/picon" android:label="@string/app_name">
-        <activity android:name=".apigen"
+        <activity android:name=".apigenactivity"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
